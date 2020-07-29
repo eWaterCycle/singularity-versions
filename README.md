@@ -1,6 +1,6 @@
 # singularity builds for Actions
 
-![Build distro](https://github.com/eWaterCycle/singularity-versions/workflows/Build%20distro/badge.svg)
+![Publish](https://github.com/eWaterCycle/singularity-versions/workflows/Publish/badge.svg)
 
 This repository contains the code and scripts that we use to build singularity which is accessible through the [setup-singularity](https://github.com/eWaterCycle/setup-singularity) Action.
 
