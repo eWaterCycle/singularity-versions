@@ -1,10 +1,9 @@
 name: Publish
 
 on:
-  push
-  # push:
-  #   tags:
-  #     - 'v*.*.*'
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -14,11 +13,9 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
-        sing: [3.5.3, 3.6.1]
     steps:
       - name: Set env
-        run: echo ::set-env name=RELEASE_VERSION::${{ matrix.sing }}
-        # run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/v}
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/v}
       - uses: actions/checkout@v2
         with:
           repository: hpcng/singularity
@@ -48,4 +45,3 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: singularity-${{ env.RELEASE_VERSION }}-${{ matrix.os }}-x64.tar.gz
           tag: ${{ github.ref }}
-          overwrite: true
