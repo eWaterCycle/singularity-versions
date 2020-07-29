@@ -28,7 +28,7 @@ jobs:
         run: sudo apt install uuid-dev
       - name: Build
         run: |
-          ./mconfig -p ${{ runner.tool_cache }}/singularity/${{ env.RELEASE_VERSION }}/x64
+          ./mconfig --without-suid -p ${{ runner.tool_cache }}/singularity/${{ env.RELEASE_VERSION }}/x64
           cd builddir
           make -j 2
           make install
