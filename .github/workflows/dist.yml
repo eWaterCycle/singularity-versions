@@ -1,0 +1,48 @@
+name: Publish
+
+on:
+  push
+  # push:
+  #   tags:
+  #     - 'v*.*.*'
+
+jobs:
+  build:
+    name: Build ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+    steps:
+      - name: Set env
+        # run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/v}
+        run: echo ::set-env name=RELEASE_VERSION::3.6.1
+      - uses: actions/checkout@v2
+        with:
+          repository: hpcng/singularity
+          ref: v${{ env.RELEASE_VERSION }}
+      - name: Setup GO
+        uses: actions/setup-go@v2
+        with:
+          go-version: '^1.14.6'
+      - name: Build
+        run: |
+          go mod init github.com/hpcng/singularity
+          ./mconfig -p ${{ runner.tool_cache }}/singularity/${{ env.RELEASE_VERSION }}/x64
+          cd builddir
+          make -j 2
+          make install
+      - name: Echo version
+        run: |
+          echo ${{ github.ref }}
+          ${{ runner.tool_cache }}/singularity/${{ env.RELEASE_VERSION }}/x64/bin/singularity --version
+      # - name: Make tarball
+      #   run: |
+      #     tar -C ${{ runner.tool_cache }}/singularity/${{ env.RELEASE_VERSION }}/x64 -zcf singularity-${{ env.RELEASE_VERSION }}-${{ matrix.os }}-x64.tar.gz .
+      # - name: Upload tarball to release
+      #   uses: svenstaro/upload-release-action@v2
+      #   with:
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     file: singularity-${{ env.RELEASE_VERSION }}-${{ matrix.os }}-x64.tar.gz
+      #     tag: ${{ github.ref }}
