@@ -40,5 +40,26 @@
                 "download_url": "https://github.com/eWaterCycle/singularity-versions/releases/download/v3.6.1/singularity-3.6.1-ubuntu-20.04-x64.tar.gz"
             }
         ]
+    },
+    {
+        "version": "3.6.4",
+        "stable": true,
+        "release_url": "https://github.com/eWaterCycle/singularity-versions/releases/tag/v3.6.4",
+        "files": [
+            {
+                "filename": "singularity-3.6.4-ubuntu-18.04-x64.tar.gz",
+                "arch": "x64",
+                "platform": "linux",
+                "platform_version": "18.04",
+                "download_url": "https://github.com/eWaterCycle/singularity-versions/releases/download/v3.6.4/singularity-3.6.4-ubuntu-18.04-x64.tar.gz"
+            },
+            {
+                "filename": "singularity-3.6.4-ubuntu-20.04-x64.tar.gz",
+                "arch": "x64",
+                "platform": "linux",
+                "platform_version": "20.04",
+                "download_url": "https://github.com/eWaterCycle/singularity-versions/releases/download/v3.6.4/singularity-3.6.4-ubuntu-20.04-x64.tar.gz"
+            }
+        ]
     }
 ]
