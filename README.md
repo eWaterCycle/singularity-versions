@@ -8,6 +8,6 @@ This repository contains the code and scripts that we use to build singularity w
 
 ## Add new version
 
-1. Create a GH release with same version as singularity version you want to build. For example `v3.6.1`.
-1. Wait for GH action job to add tarballs to release
-1. Update versions-manifest.json with new version and tarballs
+1. Start a [build workflow](), set version to for example `3.7.1`. Will create a release with compiled singularity
+1. Start a [manifest update workflow]() to get updated `versions-manifest.json` file
+1. Merge the generated PR
