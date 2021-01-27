@@ -1,7 +1,8 @@
 {
-    "regex": "singularity-\\d+\\.\\d+\\.\\d+-(\\w+)-(x\\d+)",
+    "regex": "singularity-\\d+\\.\\d+\\.\\d+-(\\w+)-(\\d+\\.\\d+)-(x\\d+)",
     "groups": {
-        "arch": 2,
-        "platform": 1
+        "arch": 3,
+        "platform": "linux",
+        "platform_version": 2
     }
 }
