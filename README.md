@@ -8,6 +8,6 @@ This repository contains the code and scripts that we use to build singularity w
 
 ## Add new version
 
-1. Start a [build workflow](), set version to for example `3.7.1`. Will create a release with compiled singularity
-1. Start a [manifest update workflow]() to get updated `versions-manifest.json` file
+1. Start a [build workflow](https://github.com/eWaterCycle/singularity-versions/actions?query=workflow%3A%22Generate+singularity+version%22), set version to for example `3.7.1`. Will create a release with compiled singularity
+1. Start a [manifest update workflow](https://github.com/eWaterCycle/singularity-versions/actions?query=workflow%3A%22Create+Pull+Request%22) to get updated `versions-manifest.json` file
 1. Merge the generated PR
