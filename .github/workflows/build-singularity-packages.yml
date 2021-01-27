@@ -12,10 +12,10 @@ env:
 
 jobs:
   build:
-    name: Build ${{ matrix.os }}
+    name: Build Singularity ${{ github.event.inputs.VERSION }} [${{ matrix.os }}]
     runs-on: ${{ matrix.os }}
     env:
-      ARTIFACT_NAME: singularity-${{ env.VERSION }}-${{ matrix.os }}-x64
+      ARTIFACT_NAME: singularity-${{ github.event.inputs.VERSION }}-${{ matrix.os }}-x64
     strategy:
       fail-fast: true
       matrix:
@@ -42,13 +42,13 @@ jobs:
           ${{ runner.tool_cache }}/singularity/${{ env.VERSION }}/x64/bin/singularity --version
       - name: Make tarball
         run: |
-          mkdir artifact
-          tar -C ${{ runner.tool_cache }}/singularity/${{ env.VERSION }}/x64 -zcf artifact/${{ env.ARTIFACT_NAME }}.tar.gz .
+          mkdir ${{ runner.temp }}/artifact
+          tar -C ${{ runner.tool_cache }}/singularity/${{ env.VERSION }}/x64 -zcf ${{ runner.temp }}/artifact/${{ env.ARTIFACT_NAME }}.tar.gz .
       - name: Publish artifact
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.ARTIFACT_NAME }}
-          path: artifact/
+          path: ${{ runner.temp }}/artifact
   publish_release:
     name: Publish build tarballs in a release
     runs-on: ubuntu-latest
