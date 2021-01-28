@@ -100,5 +100,5 @@ jobs:
   #           owner: context.repo.owner,
   #           repo: context.repo.repo,
   #           workflow_id: 'create-pr.yml',
-  #           ref: 'master'
+  #           ref: 'main'
   #         });
