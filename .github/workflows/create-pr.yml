@@ -1,4 +1,4 @@
-name: Create Pull Request
+name: Update manifest
 on:
   workflow_dispatch:
 
